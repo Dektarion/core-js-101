@@ -18,8 +18,8 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  return `${value1}${value2}`;
 }
 
 
@@ -34,8 +34,8 @@ function concatenateStrings(/* value1, value2 */) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  return value.length;
 }
 
 /**
@@ -51,8 +51,8 @@ function getStringLength(/* value */) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -65,8 +65,8 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.slice(7, -1);
 }
 
 
@@ -80,8 +80,8 @@ function extractNameFromTemplate(/* value */) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  return value[0];
 }
 
 /**
@@ -95,8 +95,8 @@ function getFirstChar(/* value */) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
 
 /**
@@ -110,8 +110,8 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
-  throw new Error('Not implemented');
+function repeatString(value, count) {
+  return value.repeat(count);
 }
 
 /**
@@ -126,8 +126,8 @@ function repeatString(/* value, count */) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  return str.replace(value, '');
 }
 
 /**
@@ -141,8 +141,8 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.replace('<', '').replace('>', '');
 }
 
 
@@ -156,8 +156,8 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  return str.toUpperCase();
 }
 
 /**
@@ -175,8 +175,8 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -202,8 +202,12 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const startLine = `┌${'─'.repeat(width - 2)}┐\n`;
+  const endLine = `└${'─'.repeat(width - 2)}┘\n`;
+  const middle = `│${' '.repeat(width - 2)}│\n`;
+
+  return `${startLine}${middle.repeat(height - 2)}${endLine}`;
 }
 
 
@@ -223,8 +227,125 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const dictionary = {
+    // eslint-disable-next-line quote-props
+    'A': 'N',
+    // eslint-disable-next-line quote-props
+    'B': 'O',
+    // eslint-disable-next-line quote-props
+    'C': 'P',
+    // eslint-disable-next-line quote-props
+    'D': 'Q',
+    // eslint-disable-next-line quote-props
+    'E': 'R',
+    // eslint-disable-next-line quote-props
+    'F': 'S',
+    // eslint-disable-next-line quote-props
+    'G': 'T',
+    // eslint-disable-next-line quote-props
+    'H': 'U',
+    // eslint-disable-next-line quote-props
+    'I': 'V',
+    // eslint-disable-next-line quote-props
+    'J': 'W',
+    // eslint-disable-next-line quote-props
+    'K': 'X',
+    // eslint-disable-next-line quote-props
+    'L': 'Y',
+    // eslint-disable-next-line quote-props
+    'M': 'Z',
+    // eslint-disable-next-line quote-props
+    'N': 'A',
+    // eslint-disable-next-line quote-props
+    'O': 'B',
+    // eslint-disable-next-line quote-props
+    'P': 'C',
+    // eslint-disable-next-line quote-props
+    'Q': 'D',
+    // eslint-disable-next-line quote-props
+    'R': 'E',
+    // eslint-disable-next-line quote-props
+    'S': 'F',
+    // eslint-disable-next-line quote-props
+    'T': 'G',
+    // eslint-disable-next-line quote-props
+    'U': 'H',
+    // eslint-disable-next-line quote-props
+    'V': 'I',
+    // eslint-disable-next-line quote-props
+    'W': 'J',
+    // eslint-disable-next-line quote-props
+    'X': 'K',
+    // eslint-disable-next-line quote-props
+    'Y': 'L',
+    // eslint-disable-next-line quote-props
+    'Z': 'M',
+    // eslint-disable-next-line quote-props
+    'a': 'n',
+    // eslint-disable-next-line quote-props
+    'b': 'o',
+    // eslint-disable-next-line quote-props
+    'c': 'p',
+    // eslint-disable-next-line quote-props
+    'd': 'q',
+    // eslint-disable-next-line quote-props
+    'e': 'r',
+    // eslint-disable-next-line quote-props
+    'f': 's',
+    // eslint-disable-next-line quote-props
+    'g': 't',
+    // eslint-disable-next-line quote-props
+    'h': 'u',
+    // eslint-disable-next-line quote-props
+    'i': 'v',
+    // eslint-disable-next-line quote-props
+    'j': 'w',
+    // eslint-disable-next-line quote-props
+    'k': 'x',
+    // eslint-disable-next-line quote-props
+    'l': 'y',
+    // eslint-disable-next-line quote-props
+    'm': 'z',
+    // eslint-disable-next-line quote-props
+    'n': 'a',
+    // eslint-disable-next-line quote-props
+    'o': 'b',
+    // eslint-disable-next-line quote-props
+    'p': 'c',
+    // eslint-disable-next-line quote-props
+    'q': 'd',
+    // eslint-disable-next-line quote-props
+    'r': 'e',
+    // eslint-disable-next-line quote-props
+    's': 'f',
+    // eslint-disable-next-line quote-props
+    't': 'g',
+    // eslint-disable-next-line quote-props
+    'u': 'h',
+    // eslint-disable-next-line quote-props
+    'v': 'i',
+    // eslint-disable-next-line quote-props
+    'w': 'j',
+    // eslint-disable-next-line quote-props
+    'x': 'k',
+    // eslint-disable-next-line quote-props
+    'y': 'l',
+    // eslint-disable-next-line quote-props
+    'z': 'm',
+    ' ': ' ',
+    '!': '!',
+    '?': '?',
+  };
+
+  let result = '';
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const value of str) {
+    result = `${result}${dictionary[value]}`;
+  }
+
+  return result;
 }
 
 /**
@@ -237,11 +358,14 @@ function encodeToRot13(/* str */) {
  *   isString(null) => false
  *   isString([]) => false
  *   isString({}) => false
- *   isString('test') => true
+ *   isString() => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (value instanceof String) {
+    return true;
+  }
+  return typeof value === 'string';
 }
 
 
