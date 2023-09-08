@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const assert = require('assert');
 const tasks = require('../src/03-arrays-tasks');
 it.optional = require('../extensions/it-optional');
@@ -689,8 +690,8 @@ describe('03-arrays-tasks', () => {
       {
         start: -5,
         end: -3,
-        expected: [-5, -4 ,-3],
-      }
+        expected: [-5, -4, -3],
+      },
     ].forEach((data) => {
       const actual = tasks.getIntervalArray(data.start, data.end);
       assert.deepEqual(
