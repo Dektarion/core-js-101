@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const assert = require('assert');
 const tasks = require('../src/04-conditions-n-loops-tasks');
 it.optional = require('../extensions/it-optional');

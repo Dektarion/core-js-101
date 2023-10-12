@@ -1,3 +1,6 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-else-return */
 /* *************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -27,8 +30,16 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  if (num % 3 === 0 && num % 5 === 0) {
+    return 'FizzBuzz';
+  } else if (num % 3 === 0) {
+    return 'Fizz';
+  } else if (num % 5 === 0) {
+    return 'Buzz';
+  } else {
+    return num;
+  }
 }
 
 
@@ -43,8 +54,12 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  let result = 1;
+  while (n) {
+    result *= n--;
+  }
+  return result;
 }
 
 
