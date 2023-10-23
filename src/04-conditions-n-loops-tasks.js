@@ -371,6 +371,64 @@ function getDigitalRoot(num) {
  */
 function isBracketsBalanced(/* str */) {
   throw new Error('Not implemented');
+  // const closeDicr = {
+  //   '[': ']',
+  //   '(': ')',
+  //   '{': '}',
+  //   '<': '>',
+  // };
+
+  // const resArr = [];
+
+  // for (let i = 0; i < str.length; i++) {
+  //   const currentChar = str[i];
+  //   if (Object.keys(closeDicr).includes(currentChar)) {
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
+  // return resArr;
+
+
+  // let openArr = [];
+  // let closeDicr = {};
+  // let cloneBrackets = [];
+
+  // bracketsConfig.forEach((element) => {
+  //   openArr.push(element[0]);
+  //   closeDicr[element[1]] = element[0];
+  //   if (element[0] === element[1]) {
+  //     cloneBrackets.push(element[0])
+  //   }
+  // })
+
+  // let stack = [];
+  // for (let i = 0; i < str.length; i++){
+  //   let currentChar = str[i];
+  //   let topElement = stack[stack.length - 1];
+
+  //   if (cloneBrackets.includes(currentChar) && stack.includes(currentChar)) {
+  //     if (currentChar === topElement) {
+  //       stack.pop(currentChar);
+  //       } else {
+  //         return false;
+  //       }
+  //     } else if (openArr.includes(currentChar)){
+  //         stack.push(currentChar);
+  //     } else {
+  //         if (stack.length === 0){
+  //         return false;
+  //         }
+
+  //         if (closeDicr[currentChar] === topElement){
+  //           stack.pop(currentChar);
+  //         } else {
+  //           return false;
+  //         }
+  //     }
+  // }
+  // return stack.length === 0;
 }
 
 
@@ -394,8 +452,8 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 
@@ -411,8 +469,15 @@ function toNaryString(/* num, n */) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  let i = 0;
+  // eslint-disable-next-line no-loop-func
+  while (pathes.every((path) => path[i] === pathes[0][i])) {
+    i++;
+  }
+
+  // eslint-disable-next-line no-useless-escape
+  return pathes[0].slice(0, i).replace(/[^\/]+$/, '');
 }
 
 
@@ -434,8 +499,27 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  // const resColum = m2[0].length;
+  const resRow = m1.length;
+
+  let i = 0;
+  let n = 0;
+  const result = m1.map((arr) => {
+    const elemArr = arr.map(() => {
+      const elem = m1[i][0] * m2[0][n] + m1[i][1] * m2[1][n] + m1[i][2] * m2[2][n];
+      n++;
+      return elem;
+    });
+    n = 0;
+    i++;
+    if (resRow === 1) {
+      elemArr.splice(1, 2);
+    }
+    return elemArr;
+  });
+
+  return result;
 }
 
 
